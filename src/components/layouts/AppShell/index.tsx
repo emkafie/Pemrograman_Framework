@@ -1,4 +1,7 @@
+import { useRouter } from "next/router";
 import Navbar from "../navbar";
+
+const disableNavbarRoutes = ["/auth/login", "/auth/register"];
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -6,10 +9,13 @@ type AppShellProps = {
 
 const AppShell = (props: AppShellProps) => {
     const { children } = props;
+    const router = useRouter();
+
+    const shouldShowNavbar = !disableNavbarRoutes.includes(router.pathname);
 
     return (
         <div className="min-h-screen flex flex-col">
-            <Navbar />
+            {shouldShowNavbar && <Navbar />}
             <main className="flex-1">{children}</main>
             <footer className="footer">Ini Footer</footer>
         </div>

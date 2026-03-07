@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:webpack": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,5 +23,8 @@
     "react-dom": "19.2.4",
     "tailwindcss": "4.2.0",
     "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3"
   }
 }
