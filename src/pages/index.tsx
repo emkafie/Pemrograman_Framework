@@ -1,11 +1,8 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import Link from "next/dist/client/link";
-import Navbar from "../components/layouts/navbar";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-24">
+    <section className="flex min-h-screen flex-col gap-4 p-24">
       <h1 className="text-4xl font-bold">Praktikum Next.js</h1>
       <p className="text-lg">Mahasiswa D4 Pengembangan Web</p>
       <div className="flex flex-col my-3 gap-4">
@@ -22,6 +19,6 @@ export default function Home() {
           <p className="text-white">Ke Halaman Profile</p>
         </Link>
       </div>
-    </main>
+    </section>
   );
 }

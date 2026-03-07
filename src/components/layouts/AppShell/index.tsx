@@ -6,16 +6,12 @@ type AppShellProps = {
 
 const AppShell = (props: AppShellProps) => {
     const { children } = props;
+
     return (
-        <div>
-            <main>
-                <Navbar />
-                {children}
-                <footer className="footer">
-                    Ini Footer
-                </footer>
-            </main>
-                
+        <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <footer className="footer">Ini Footer</footer>
         </div>
     );
 };
