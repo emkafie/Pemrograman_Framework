@@ -11,7 +11,8 @@ const AppShell = (props: AppShellProps) => {
     const { children } = props;
     const router = useRouter();
 
-    const shouldShowNavbar = !disableNavbarRoutes.includes(router.pathname);
+    const isErrorPage = router.pathname === "/404" || router.route === "/404" || router.pathname === "/_error";
+    const shouldShowNavbar = !disableNavbarRoutes.includes(router.pathname) && !isErrorPage;
 
     return (
         <div className="min-h-screen flex flex-col">

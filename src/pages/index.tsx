@@ -1,9 +1,16 @@
 import Link from "next/link";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <section className="flex min-h-screen flex-col gap-4 p-24">
-      <h1 className="text-4xl font-bold">Praktikum Next.js</h1>
+    <section
+      className={`flex min-h-screen flex-col gap-4 p-24 ${inter.className}`}
+    >
+      <head>
+        <title className="text-4xl font-bold">Praktikum Next.js</title>
+      </head>
       <p className="text-lg">Mahasiswa D4 Pengembangan Web</p>
       <div className="flex flex-col my-3 gap-4">
         <Link
