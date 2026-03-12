@@ -1,7 +1,11 @@
 import ProdukView from "../../views/produk";
 
 const ProdukPage = () => {
-  return <ProdukView />;
+  return (
+    <div>
+      <ProdukView />
+    </div>
+  );
 };
 
 export default ProdukPage;
