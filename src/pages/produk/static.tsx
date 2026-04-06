@@ -1,22 +1,21 @@
-import TampilanProduk from "../../views/produk";
+import ProdukView from "@/views/produk";
 import { ProductType } from "../../types/Product.type";
 import { retrieveProducts } from "@/utils/db/servicefirebase";
 
 
-const halamanProdukServer = (props: { products: ProductType[] }) => {
+const halamanProdukStatic = (props: { products: ProductType[] }) => {
   const { products } = props;
   return (
     <div>
-      <TampilanProduk products={products} />
+      <ProdukView products={products} />
     </div>
   );
 };
 
-export default halamanProdukServer;
+export default halamanProdukStatic;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const data = await retrieveProducts("products");
-  // console.log("Data produk dari API:", data);
   return {
     props: {
       products: data as ProductType[],

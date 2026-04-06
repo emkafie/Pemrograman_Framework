@@ -1,21 +1,91 @@
+import styles from "@/views/produk/produk.module.scss";
+import { ProductType } from "@/types/Product.type";
+import useSWR from "swr";
+import fetcher from "@/utils/swr/fetcher";
+
 type MainSectionProps = {
-  onLogout: () => void;
+  products?: ProductType[];
 };
 
-const MainSection = ({ onLogout }: MainSectionProps) => {
+const MainSection = ({ products }: MainSectionProps) => {
+  // --- FETCHING DENGAN SWR ---
+  // Jika products sudah disediakan (melalui SSG/SSR), matikan SWR dengan mengirim null.
+  const { data, error, isLoading, mutate } = useSWR(
+    products ? null : "/api/produk", 
+    fetcher
+  );
+
+  // Prioritaskan data dari props (SSR/SSG), jika tidak, gunakan data dari SWR (CSR)
+  const displayProducts: ProductType[] = products ?? data?.data ?? [];
+
   return (
     <main className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-      <h2 className="text-2xl font-semibold text-slate-800">Main Section</h2>
-      <p className="mt-2 text-slate-600">
-        Ini area utama untuk menampilkan daftar, filter, atau detail produk.
-      </p>
+      <div className="mb-3 flex flex-row items-center justify-between gap-3">
+        <h1 className="text-3xl font-bold text-slate-800">
+          Daftar Produk {products ? "(Static/Server)" : "(Client-SWR)"}
+        </h1>
+        <button
+          type="button"
+          onClick={() => mutate()} // --- SWR FETCHING ---
+          disabled={isLoading}
+          className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600 disabled:cursor-not-allowed disabled:bg-green-300"
+        >
+          {isLoading ? "Memuat..." : "Refresh Data"}
+        </button>
+      </div>
+      {error && (
+        <p className="mb-4 rounded bg-red-50 px-3 py-2 text-sm text-red-600">
+          Data produk gagal dimuat. Silakan coba lagi. {/* --- SWR ERROR --- */}
+        </p>
+      )}
+      <section className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {displayProducts.map((product) => (
+          <div
+            key={product.id}
+            className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md"
+          >
+            {/* Image Container - Consistent Aspect Ratio */}
+            <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden bg-slate-100">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
+            
+            {/* Content Container */}
+            <div className="flex flex-1 flex-col justify-between border-t border-slate-100 p-5">
+              <div className="flex flex-col gap-2">
+                <div className="flex">
+                    <p className="-ml-1 w-fit rounded-md bg-slate-100 px-2 py-1 text-xs font-semibold uppercase tracking-wider text-slate-600">
+                    {product.category}
+                    </p>
+                </div>
+                <h2 className="line-clamp-2 text-lg font-bold leading-snug text-slate-800 transition-colors group-hover:text-blue-600">
+                  {product.name}
+                </h2>
+                <p className="text-sm font-medium text-slate-500">Ukuran: {product.size}</p>
+              </div>
+              <div className="mt-5 flex items-center justify-between">
+                <p className="text-xl font-bold text-slate-900">
+                  Rp. {product.price?.toLocaleString("id-ID") ?? "0"}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
 
-      <button
-        onClick={onLogout}
-        className="mt-6 rounded bg-rose-500 px-4 py-2 font-medium text-white hover:bg-rose-600"
-      >
-        Logout
-      </button>
+        {/* Skeleton loading styles fallback, can be adjusted in scss later if needed */}
+        {isLoading && (
+          <div className={styles.produk_content_skeleton}>
+            <div className={styles.produk_content_skeleton_image}></div>
+            <div className={styles.produk_content_skeleton_name}></div>
+            <div className={styles.produk_content_skeleton_price}></div>
+            <div className={styles.produk_content_skeleton_category}></div>
+            <div className={styles.produk_content_skeleton_size}></div>
+          </div>
+        )}
+      </section>
     </main>
   );
 };
