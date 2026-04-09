@@ -3,26 +3,40 @@ import { ProductType } from "@/types/Product.type";
 import useSWR from "swr";
 import fetcher from "@/utils/swr/fetcher";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type MainSectionProps = {
   products?: ProductType[];
 };
 
 const MainSection = ({ products }: MainSectionProps) => {
+  const router = useRouter();
+
   // --- FETCHING DENGAN SWR ---
-  // Gunakan fallbackData dari props (SSR/SSG), tapi tetap aktifkan kunci cache "/api/produk"
-  // agar mutate() bisa jalan (refresh).
+  // Jika "products" ada (artinya ini dari SSG/SSR), kita matikan total SWR
+  // secara paksa dengan key "null". Halaman ini fix statis tanpa polling SWR.
   const { data, error, isLoading, isValidating, mutate } = useSWR(
-    "/api/produk",
+    products ? null : "/api/produk",
     fetcher,
-    { fallbackData: products ? { data: products } : undefined }
+    {
+      revalidateOnFocus: false,
+    }
   );
 
-  // Status isFetching dipakai agar tampil "Memuat..." saat me-refresh SWR.
   const isFetching = isLoading || isValidating;
+  const displayProducts: ProductType[] = products ?? data?.data ?? [];
 
-  // Prioritaskan data SWR, lalu fallback ke props
-  const displayProducts: ProductType[] = data?.data ?? products ?? [];
+  // Fungsi Refresh Manual
+  const handleRefresh = async () => {
+    if (products) {
+      // Jika ini halaman SSG/SSR, gunakan soft reload router Next.js 
+      // untuk memancing SSR / ISR Revalidate.
+      router.replace(router.asPath, undefined, { scroll: false });
+    } else {
+      // Jika ini halaman SWR, gunakan mutate
+      await mutate();
+    }
+  };
 
   return (
     <main className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -32,7 +46,7 @@ const MainSection = ({ products }: MainSectionProps) => {
         </h1>
         <button
           type="button"
-          onClick={() => mutate()} // --- SWR FETCHING ---
+          onClick={handleRefresh}
           disabled={isFetching}
           className="rounded bg-green-500 px-4 py-2 text-white transition-all hover:bg-green-600 active:scale-95 disabled:cursor-not-allowed disabled:bg-green-300"
         >
