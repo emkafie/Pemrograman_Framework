@@ -10,12 +10,20 @@ const ProdukPage = ({ products }: { products: any }) => {
 };
 export default ProdukPage;
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//   const data = await retrieveProducts("products");
+//   return {
+//     props: {
+//       products: data,
+//     },
+//     revalidate: 10,
+//   };
+
+export async function getServerSideProps() {
   const data = await retrieveProducts("products");
   return {
     props: {
       products: data,
     },
-    revalidate: 10,
   };
 }
