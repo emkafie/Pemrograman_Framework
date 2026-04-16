@@ -5,7 +5,7 @@ const HalamanRegister = () => {
         <>
             <RegisterPage />
         </>
-    );  
+    );
 };
 
 export default HalamanRegister;
