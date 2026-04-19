@@ -8,7 +8,7 @@ export default function ProfilePage() {
             <h1 className="text-3xl font-bold mb-6">Profil Saya</h1>
             
             <div className="bg-white p-6 rounded shadow mb-6">
-                <p className="text-2xl font-semibold text-slate-800">Selamat Datang {data?.user?.fullname}</p>
+                <p className="text-2xl font-semibold text-slate-800">Selamat Datang {data?.user?.email}</p>
             </div>
 
             <div className="flex gap-4">

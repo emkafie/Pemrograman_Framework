@@ -6,6 +6,11 @@ import {
   NextMiddleware,
 } from "next/server";
 
+const roleAccess: any = {
+  "/admin": ["admin"],
+  "/editor": ["admin", "editor"],
+};
+
 export default function withAuth(
   middleware: NextMiddleware,
   requireAuth: string[] = [],
@@ -13,16 +18,28 @@ export default function withAuth(
   return async (req: NextRequest, next: NextFetchEvent) => {
     const pathname = req.nextUrl.pathname;
 
-    if (requireAuth.includes(pathname)) {
+    if (requireAuth.some((path) => pathname.startsWith(path))) {
       const token = await getToken({
         req,
         secret: process.env.NEXTAUTH_SECRET,
       });
       if (!token) {
-        return NextResponse.redirect(new URL("/auth/login", req.url));
+        const Url = new URL("/auth/login", req.url);
+        Url.searchParams.set("callbackUrl", encodeURI(req.url));
+        return NextResponse.redirect(Url);
+      }
+      let allowedRoles = ["all"]; // Default fallback
+      for (const [path, roles] of Object.entries(roleAccess)) {
+        if (pathname.startsWith(path)) {
+          allowedRoles = roles as string[];
+          break;
+        }
+      }
+
+      if (allowedRoles[0] !== "all" && !allowedRoles.includes(token.role as string)) {
+        return NextResponse.redirect(new URL("/", req.url));
       }
     }
-    const res = await middleware(req, next);
-    return res || NextResponse.next();
+    return middleware(req, next);
   };
 }

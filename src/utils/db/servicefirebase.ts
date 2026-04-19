@@ -1,4 +1,15 @@
-import { getFirestore, collection, getDocs, doc, getDoc, query, where, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  updateDoc,
+  getDocs,
+  doc,
+  getDoc,
+  query,
+  where,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import app from "./firebase";
 import { getAuth } from "firebase/auth";
 import bcrypt from "bcryptjs";
@@ -12,7 +23,7 @@ export async function retrieveProducts(collectionName: string) {
     const data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-    }));
+    })) as any[];
     return data;
   } catch (error) {
     console.error("Error retrieving products: ", error);
@@ -35,6 +46,20 @@ export async function retrieveProductById(collectionName: string, id: string) {
   }
 }
 
+export async function signIn(email: string) {
+  const q = query(collection(db, "users"), where("email", "==", email));
+  const querySnapshot = await getDocs(q);
+  const data = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as any[];
+
+  if (data.length > 0) {
+    return data[0];
+  }
+  return null;
+}
+
 export async function signUp(
   userData: {
     email: string;
@@ -42,7 +67,7 @@ export async function signUp(
     username: string;
     role?: string;
   },
-  callback: (result: { status: boolean; message: string }) => void
+  callback: (result: { status: boolean; message: string }) => void,
 ) {
   if (!userData.email || !userData.password) {
     return callback({
@@ -51,12 +76,15 @@ export async function signUp(
     });
   }
 
-  const q = query(collection(db, "users"), where("email", "==", userData.email));
+  const q = query(
+    collection(db, "users"),
+    where("email", "==", userData.email),
+  );
   const querySnapshot = await getDocs(q);
   const data = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
-  }));
+  })) as any[];
 
   if (data.length > 0) {
     callback({
@@ -67,7 +95,7 @@ export async function signUp(
     try {
       userData.password = await bcrypt.hash(userData.password, 10);
       userData.role = "member";
-      
+
       await addDoc(collection(db, "users"), {
         ...userData,
         created_at: serverTimestamp(),
@@ -85,3 +113,39 @@ export async function signUp(
   }
 }
 
+export async function signInWithOAuth(userData: any, callback: any) {
+  try {
+    const q = query(
+      collection(db, "users"),
+      where("email", "==", userData.email),
+    );
+    const querySnapshot = await getDocs(q);
+    const data: any = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    if (data.length > 0) {
+      userData.role = data[0].role;
+      await updateDoc(doc(db, "users", data[0].id), userData);
+      callback({
+        status: true,
+        message: `User berhasil login dengan ${userData.type}`,
+        data: userData
+      });
+    } else {
+      userData.role = "member";
+      await addDoc(collection(db, "users"), userData);
+      callback({
+        status: true,
+        message: `User berhasil daftar dan login dengan ${userData.type}`,
+        data: userData
+      });
+    }
+  } catch (error) {
+    callback({
+      status: false,
+      message: "Gagal login: " + (error as Error).message,
+    });
+  }
+}

@@ -1,9 +1,10 @@
 import { signOut, useSession, signIn } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from './navbar.module.css'; // Keep import if needed, though we primarily use Tailwind now
 
 const Navbar = () => {
-  const { data: session } = useSession();
+  const { data }:any = useSession();
 
   return (
     <nav className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-slate-200 bg-white px-6 shadow-sm">
@@ -30,11 +31,14 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        {session ? (
+        {data ? (
           <div className="flex items-center gap-4">
             <span className="text-sm font-medium text-slate-700 hidden sm:block">
-              Hai, {(session?.user as any)?.fullname || session?.user?.name || 'User'}!
+              Hai, {(data?.user as any)?.fullname || data?.user?.email || 'User'}!
             </span>
+            {data.user.image && (
+              <Image src={data.user.image} alt={data.user.fullname || "User Avatar"} width={32} height={32} className="w-8 h-8 rounded-full" />
+            )}
             <button
               onClick={() => signOut()}
               className="rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-red-600 active:scale-95"

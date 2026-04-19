@@ -1,17 +1,20 @@
 import Link from "next/link";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <section
-      className={`flex min-h-screen flex-col gap-4 p-24 ${inter.className}`}
-    >
-      <head>
-        <title className="text-4xl font-bold">Praktikum Next.js</title>
-      </head>
-      <p className="text-lg">Mahasiswa D4 Pengembangan Web</p>
+    <>
+      <Head>
+        <title>Praktikum Next.js</title>
+      </Head>
+      <section
+        className={`flex min-h-screen flex-col gap-4 p-24 ${inter.className}`}
+      >
+        <h1 className="text-4xl font-bold">Praktikum Next.js</h1>
+        <p className="text-lg">Mahasiswa D4 Pengembangan Web</p>
       <div className="flex flex-col my-3 gap-4">
         <Link
           href="/about"
@@ -27,5 +30,6 @@ export default function Home() {
         </Link>
       </div>
     </section>
+    </>
   );
 }
