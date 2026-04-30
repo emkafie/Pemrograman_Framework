@@ -8,7 +8,7 @@ const Navbar = () => {
   const { data }: any = useSession();
 
   return (
-    <nav className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-slate-200 bg-white px-6 shadow-sm">
+    <nav data-testid="navbar" className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-slate-200 bg-white px-6 shadow-sm">
       <div className="flex items-center gap-8">
         <div className="text-xl font-bold text-blue-600 transition-colors hover:text-blue-700">
           <Link href="/">TokoApasih</Link>

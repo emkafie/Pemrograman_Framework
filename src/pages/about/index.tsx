@@ -4,7 +4,7 @@ export default function About() {
     <div className="flex min-h-[70vh] items-center justify-center p-4">
       <main className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm flex flex-col gap-6">
         <div className="flex flex-col items-center gap-2 text-center border-b border-slate-100 pb-4">
-          <h1 className="text-3xl font-bold text-slate-800">Halaman About</h1>
+          <h1 data-testid="title" className="text-3xl font-bold text-slate-800">Halaman About</h1>
           <p className="text-sm font-medium text-slate-500">Informasi Mahasiswa</p>
         </div>
         

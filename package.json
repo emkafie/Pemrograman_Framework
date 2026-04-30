@@ -7,7 +7,10 @@
     "dev:webpack": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.1",
@@ -29,7 +32,12 @@
     "typescript": "5.9.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/bcryptjs": "^2.4.6",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
     "sass": "^1.97.3"
   }
 }

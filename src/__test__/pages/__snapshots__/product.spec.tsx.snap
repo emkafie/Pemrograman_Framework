@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Product Page renders product page correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div>
+        <div
+          class="mx-auto flex w-full flex-col gap-6 px-4 py-8"
+        >
+          <main
+            class="flex flex-col gap-5 "
+          >
+            <section
+              class="rounded-xl bg-linear-to-r from-emerald-500 to-green-600 p-6 text-white shadow-md"
+            >
+              <p
+                class="text-sm uppercase tracking-wide text-emerald-100"
+                data-testid="title"
+              >
+                Dashboard Produk
+              </p>
+              <h1
+                class="mt-2 text-3xl font-bold"
+              >
+                Selamat datang, 
+                User
+              </h1>
+              <p
+                class="mt-2 text-emerald-50"
+              >
+                Kelola dan lihat ringkasan produk kamu dari satu tempat.
+              </p>
+            </section>
+            <main
+              class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <div
+                class="mb-3 flex flex-row items-center justify-between gap-3"
+              >
+                <h1
+                  class="text-3xl font-bold text-slate-800"
+                >
+                  Daftar Produk 
+                  (Static/Server)
+                </h1>
+                <button
+                  class="rounded bg-green-500 px-4 py-2 text-white transition-all hover:bg-green-600 active:scale-95 disabled:cursor-not-allowed disabled:bg-green-300"
+                  type="button"
+                >
+                  Refresh Data
+                </button>
+              </div>
+              <section
+                class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+              >
+                <div
+                  class="produk_content_skeleton"
+                >
+                  <div
+                    class="produk_content_skeleton_image"
+                  />
+                  <div
+                    class="produk_content_skeleton_name"
+                  />
+                  <div
+                    class="produk_content_skeleton_price"
+                  />
+                  <div
+                    class="produk_content_skeleton_category"
+                  />
+                  <div
+                    class="produk_content_skeleton_size"
+                  />
+                </div>
+              </section>
+            </main>
+          </main>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div>
+      <div
+        class="mx-auto flex w-full flex-col gap-6 px-4 py-8"
+      >
+        <main
+          class="flex flex-col gap-5 "
+        >
+          <section
+            class="rounded-xl bg-linear-to-r from-emerald-500 to-green-600 p-6 text-white shadow-md"
+          >
+            <p
+              class="text-sm uppercase tracking-wide text-emerald-100"
+              data-testid="title"
+            >
+              Dashboard Produk
+            </p>
+            <h1
+              class="mt-2 text-3xl font-bold"
+            >
+              Selamat datang, 
+              User
+            </h1>
+            <p
+              class="mt-2 text-emerald-50"
+            >
+              Kelola dan lihat ringkasan produk kamu dari satu tempat.
+            </p>
+          </section>
+          <main
+            class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+          >
+            <div
+              class="mb-3 flex flex-row items-center justify-between gap-3"
+            >
+              <h1
+                class="text-3xl font-bold text-slate-800"
+              >
+                Daftar Produk 
+                (Static/Server)
+              </h1>
+              <button
+                class="rounded bg-green-500 px-4 py-2 text-white transition-all hover:bg-green-600 active:scale-95 disabled:cursor-not-allowed disabled:bg-green-300"
+                type="button"
+              >
+                Refresh Data
+              </button>
+            </div>
+            <section
+              class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            >
+              <div
+                class="produk_content_skeleton"
+              >
+                <div
+                  class="produk_content_skeleton_image"
+                />
+                <div
+                  class="produk_content_skeleton_name"
+                />
+                <div
+                  class="produk_content_skeleton_price"
+                />
+                <div
+                  class="produk_content_skeleton_category"
+                />
+                <div
+                  class="produk_content_skeleton_size"
+                />
+              </div>
+            </section>
+          </main>
+        </main>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`About Page renders about page correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="flex min-h-[70vh] items-center justify-center p-4"
+      >
+        <main
+          class="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm flex flex-col gap-6"
+        >
+          <div
+            class="flex flex-col items-center gap-2 text-center border-b border-slate-100 pb-4"
+          >
+            <h1
+              class="text-3xl font-bold text-slate-800"
+              data-testid="title"
+            >
+              Halaman About
+            </h1>
+            <p
+              class="text-sm font-medium text-slate-500"
+            >
+              Informasi Mahasiswa
+            </p>
+          </div>
+          <div
+            class="flex flex-col gap-4"
+          >
+            <div
+              class="flex flex-col gap-1"
+            >
+              <span
+                class="text-xs font-semibold text-slate-500 uppercase tracking-wider"
+              >
+                Nama
+              </span>
+              <p
+                class="text-lg font-medium text-slate-800"
+              >
+                Farrel Muchammad Kafie
+              </p>
+            </div>
+            <div
+              class="flex flex-col gap-1"
+            >
+              <span
+                class="text-xs font-semibold text-slate-500 uppercase tracking-wider"
+              >
+                NIM
+              </span>
+              <p
+                class="text-lg font-medium text-slate-800"
+              >
+                2341720176
+              </p>
+            </div>
+            <div
+              class="flex flex-col gap-1"
+            >
+              <span
+                class="text-xs font-semibold text-slate-500 uppercase tracking-wider"
+              >
+                Program Studi
+              </span>
+              <p
+                class="text-lg font-medium text-slate-800"
+              >
+                D4 Pengembangan Web
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="flex min-h-[70vh] items-center justify-center p-4"
+    >
+      <main
+        class="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-sm flex flex-col gap-6"
+      >
+        <div
+          class="flex flex-col items-center gap-2 text-center border-b border-slate-100 pb-4"
+        >
+          <h1
+            class="text-3xl font-bold text-slate-800"
+            data-testid="title"
+          >
+            Halaman About
+          </h1>
+          <p
+            class="text-sm font-medium text-slate-500"
+          >
+            Informasi Mahasiswa
+          </p>
+        </div>
+        <div
+          class="flex flex-col gap-4"
+        >
+          <div
+            class="flex flex-col gap-1"
+          >
+            <span
+              class="text-xs font-semibold text-slate-500 uppercase tracking-wider"
+            >
+              Nama
+            </span>
+            <p
+              class="text-lg font-medium text-slate-800"
+            >
+              Farrel Muchammad Kafie
+            </p>
+          </div>
+          <div
+            class="flex flex-col gap-1"
+          >
+            <span
+              class="text-xs font-semibold text-slate-500 uppercase tracking-wider"
+            >
+              NIM
+            </span>
+            <p
+              class="text-lg font-medium text-slate-800"
+            >
+              2341720176
+            </p>
+          </div>
+          <div
+            class="flex flex-col gap-1"
+          >
+            <span
+              class="text-xs font-semibold text-slate-500 uppercase tracking-wider"
+            >
+              Program Studi
+            </span>
+            <p
+              class="text-lg font-medium text-slate-800"
+            >
+              D4 Pengembangan Web
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
