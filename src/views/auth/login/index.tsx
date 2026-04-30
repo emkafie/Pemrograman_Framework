@@ -81,7 +81,7 @@ const HalamanLogin = () => {
                     <button type="submit" disabled={loading}>
                         {loading ? "Memproses..." : "Masuk Akun"}
                     </button>
-                    <button type="button" onClick={() => signIn("google", { callbackUrl, redirect: false })} disabled={loading}>
+                    <button type="button" onClick={() => signIn("google", { callbackUrl, redirect: false })}>
                         {loading ? "Memproses..." : "Masuk dengan Google"}
                     </button>
                     <button type="button" onClick={() => signIn("github", { callbackUrl, redirect: false })} disabled={loading}>
