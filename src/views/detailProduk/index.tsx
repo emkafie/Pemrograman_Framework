@@ -1,6 +1,7 @@
 import { ProductType } from "@/types/Product.type";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "@/views/detailProduk/detailProduk.module.scss";
 
 const DetailProduk = ({ product }: { product: ProductType | null }) => {
@@ -42,9 +43,11 @@ const DetailProduk = ({ product }: { product: ProductType | null }) => {
           {/* Image Container */}
           <div className={styles.imageWrapper}>
             <div className={styles.imageInner}>
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
+                width={500}
+                height={500}
                 className={styles.image}
               />
             </div>

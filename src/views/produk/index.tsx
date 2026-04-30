@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import HeroSection from "./components/HeroSection";
+import dynamic from "next/dynamic";
 import useSWR from "swr";
 import fetcher from "@/utils/swr/fetcher";
 
 import { ProductType } from "@/types/Product.type";
+
+const HeroSection = dynamic(() => import("./components/HeroSection"), {
+  loading: () => <p>Loading Hero...</p>,
+  ssr: false,
+});
 
 const ProdukView = ({ products }: { products?: ProductType[] }) => {
   // --- MANUAL FETCHING (DI-COMMENT UNTUK PERBANDINGAN) ---

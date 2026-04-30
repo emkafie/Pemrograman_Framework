@@ -4,6 +4,7 @@ import useSWR from "swr";
 import fetcher from "@/utils/swr/fetcher";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 type MainSectionProps = {
   products?: ProductType[];
@@ -70,9 +71,11 @@ const MainSection = ({ products }: MainSectionProps) => {
               >
                 {/* Image Container - Consistent Aspect Ratio */}
                 <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden bg-slate-100">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
+                    width={500}
+                    height={500}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
