@@ -11,11 +11,9 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import app from "./firebase";
-import { getAuth } from "firebase/auth";
 import bcrypt from "bcryptjs";
 
 const db = getFirestore(app);
-const auth = getAuth(app);
 
 export async function retrieveProducts(collectionName: string) {
   try {
