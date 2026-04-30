@@ -16,7 +16,6 @@ export default halamanProdukServer;
 
 export async function getServerSideProps() {
   const data = await retrieveProducts("products");
-  // console.log("Data produk dari API:", data);
   return {
     props: {
       products: data as ProductType[],

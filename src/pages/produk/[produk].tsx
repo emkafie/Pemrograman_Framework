@@ -28,29 +28,7 @@ return (
 
 export default DetailProdukPage;
 
-// export async function getServerSideProps(context: any) {
-//   const { produk } = context.params;
-//   const data = await retrieveProductById("products", produk);
-
-//   return {
-//     props: {
-//       product: data ? data : null,
-//     },
-//   };
-// }
-
-export async function getStaticPaths() {
-  const data = await retrieveProducts("products");
-  const paths = data.map((product: { id: string }) => ({
-    params: { produk: product.id },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context: any) {
+export async function getServerSideProps(context: any) {
   const { produk } = context.params;
   const data = await retrieveProductById("products", produk);
 
@@ -58,6 +36,28 @@ export async function getStaticProps(context: any) {
     props: {
       product: data ? data : null,
     },
-    revalidate: 10,
   };
 }
+
+// export async function getStaticPaths() {
+//   const data = await retrieveProducts("products");
+//   const paths = data.map((product: { id: string }) => ({
+//     params: { produk: product.id },
+//   }));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
+
+// export async function getStaticProps(context: any) {
+//   const { produk } = context.params;
+//   const data = await retrieveProductById("products", produk);
+
+//   return {
+//     props: {
+//       product: data ? data : null,
+//     },
+//     revalidate: 10,
+//   };
+// }
